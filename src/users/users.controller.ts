@@ -1,16 +1,19 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly UsersService: UsersService) {
+  constructor(private readonly UsersService: UsersService) {}
 
+  @Get()
+  findAll() {
+    return this.UsersService.findAll();
   }
   @Post()
   // Postだとbodyを受け取る必要がある--@Bodyを使う
   create(@Body() createUser: CreateUserDto) {
-    return this.UsersService.crete(createUser);
+    return this.UsersService.create(createUser);
   }
 
   // create( @Body('username') username: string ,@Body('password') password: string) { //body分けて受け取りたいものだけ指定できる
