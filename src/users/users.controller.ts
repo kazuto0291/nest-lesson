@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, ValidationPipe } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 
@@ -9,6 +9,10 @@ export class UsersController {
   @Get()
   findAll() {
     return this.UsersService.findAll();
+  }
+  @Get(':username')
+  findOne(@Param('username') username: string) {
+    return this.UsersService.findOne(username);
   }
   @Post()
   // Postだとbodyを受け取る必要がある--@Bodyを使う

@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [UsersModule, MongooseModule.forRoot('mongodb+srv://zuto:password@cluster0.nqlus.mongodb.net/nest?retryWrites=true&w=majority')], //app.moduleでimportしないといけない
+  imports: [UsersModule, MongooseModule.forRoot('mongodb+srv://zuto:password@cluster0.nqlus.mongodb.net/nesttest?retryWrites=true&w=majority') ], //app.moduleでimportしないといけない
   controllers: [AppController],
   providers: [AppService],
 })
