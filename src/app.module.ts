@@ -3,9 +3,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [UsersModule, MongooseModule.forRoot('mongodb+srv://zuto:password@cluster0.nqlus.mongodb.net/nesttest?retryWrites=true&w=majority') ], //app.moduleでimportしないといけない
+  imports: [UsersModule, MongooseModule.forRoot('mongodb+srv://zuto:password@cluster0.nqlus.mongodb.net/nesttest?retryWrites=true&w=majority'), AuthModule ], //app.moduleでimportしないといけない
   controllers: [AppController],
   providers: [AppService],
 })
